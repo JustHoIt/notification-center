@@ -10,7 +10,7 @@ java {
 	}
 }
 
-ext["springCloudVersion"] = "2023.0.0"
+ext["springCloudVersion"] = "2024.0.0"
 
 
 allprojects {
