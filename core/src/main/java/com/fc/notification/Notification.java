@@ -1,21 +1,21 @@
 package com.fc.notification;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.Instant;
 
-public class Notification {
-    public String id;
-    public Long userId;
-    public NotificationType notificationType;
-    public Instant createdAt;
-    public Instant deletedAt;
-
-
-    public Notification(String id, Long userId, NotificationType notificationType, Instant createdAt, Instant deletedAt) {
-        this.id = id;
-        this.userId = userId;
-        this.notificationType = notificationType;
-        this.createdAt = createdAt;
-        this.deletedAt = deletedAt;
-    }
+@AllArgsConstructor
+@Getter
+@Document("notifications")
+public abstract class Notification {
+    private String id;
+    private Long userId;
+    private NotificationType notificationType;
+    private Instant occurredAt; // 이벤트 발생 시간
+    private Instant createdAt; // 알림이 생성된 시간
+    private Instant updatedAt; // 알림이 업데이트된 시간
+    private Instant deletedAt; // 알림이 삭제될 시간
 }
