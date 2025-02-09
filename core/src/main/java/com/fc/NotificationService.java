@@ -17,13 +17,23 @@ public class NotificationService {
     private NotificationRepository notificationRepository;
 
     public void insert(Notification notification) {
-        Notification result = notificationRepository.save(notification);
+        Notification result = notificationRepository.insert(notification);
         log.info("inserted: {}", result);
     }
 
-    public Optional<Notification> getNotification(NotificationType type, Long commentId) {
-        log.info("getNotification {} | {} ", type, commentId);
+    public void upsert(Notification notification) {
+        Notification result = notificationRepository.save(notification);
+        log.info("upserted: {}", result);
+    }
+
+    public Optional<Notification> getNotificationByTypeAndCommentId(NotificationType type, Long commentId) {
+        log.info("get type and commentId : {} | {} ", type, commentId);
         return notificationRepository.findByTypeAndCommentId(type, commentId);
+    }
+
+    public Optional<Notification> getNotificationByTypeAndPostId(NotificationType type, Long postId) {
+        log.info("get type and postId : {} | {} ", type, postId);
+        return notificationRepository.findByTypeAndPostId(type, postId);
     }
 
 
@@ -31,6 +41,7 @@ public class NotificationService {
         log.info("deleted: {}", id);
         notificationRepository.deleteById(id);
     }
+
 
 
 }
