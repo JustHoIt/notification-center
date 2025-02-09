@@ -13,7 +13,7 @@ import java.time.Instant;
 public abstract class Notification {
     private String id;
     private Long userId;
-    private NotificationType notificationType;
+    private NotificationType type;
     private Instant occurredAt; // 이벤트 발생 시간
     private Instant createdAt; // 알림이 생성된 시간
     private Instant updatedAt; // 알림이 업데이트된 시간

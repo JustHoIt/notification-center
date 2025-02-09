@@ -22,11 +22,12 @@ public class NotificationService {
     }
 
     public Optional<Notification> getNotification(NotificationType type, Long commentId) {
+        log.info("getNotification {} | {} ", type, commentId);
         return notificationRepository.findByTypeAndCommentId(type, commentId);
     }
 
 
-    public void deleteNotification(String id) {
+    public void deleteById(String id) {
         log.info("deleted: {}", id);
         notificationRepository.deleteById(id);
     }

@@ -21,15 +21,17 @@ public class CommentRemoveTask {
     @Autowired
     NotificationService notificationService;
 
+
     public void processEvent(CommentEvent event) {
         Post post = postClient.getPost(event.getPostId());
         if (Objects.equals(post.getUserId(), event.getUserId())) {
             return;
         }
 
+
         notificationService.getNotification(NotificationType.COMMENT, event.getCommentId())
                 .ifPresentOrElse(
-                        notification -> notificationService.deleteNotification(notification.getId()),
+                        notification -> notificationService.deleteById(notification.getId()),
                         () -> log.error("Notification Not Found")
                 );
     }
