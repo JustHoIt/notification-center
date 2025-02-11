@@ -3,9 +3,7 @@ package com.fc.task;
 import com.fc.*;
 import com.fc.event.like.LikeEvent;
 import com.fc.notification.Notification;
-import com.fc.notification.NotificationType;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -19,10 +17,14 @@ import static com.fc.notification.NotificationType.LIKE;
 @Component
 public class LikeAddTask {
 
-    @Autowired
-    private PostClient postClient;
-    @Autowired
-    private NotificationService notificationService;
+    private final PostClient postClient;
+
+    private final NotificationService notificationService;
+
+    public LikeAddTask(PostClient postClient, NotificationService notificationService) {
+        this.postClient = postClient;
+        this.notificationService = notificationService;
+    }
 
     public void processEvent(LikeEvent event) {
         Post post = postClient.getPost(event.getPostId());

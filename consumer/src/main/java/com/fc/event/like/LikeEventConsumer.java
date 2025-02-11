@@ -3,7 +3,6 @@ package com.fc.event.like;
 import com.fc.task.LikeAddTask;
 import com.fc.task.LikeRemoveTask;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +12,14 @@ import java.util.function.Consumer;
 @Component
 public class LikeEventConsumer {
 
-    @Autowired
-    private LikeAddTask likeAddTask;
+    private final LikeAddTask likeAddTask;
 
-    @Autowired
-    private LikeRemoveTask likeRemoveTask;
+    private final LikeRemoveTask likeRemoveTask;
+
+    public LikeEventConsumer(LikeAddTask likeAddTask, LikeRemoveTask likeRemoveTask) {
+        this.likeAddTask = likeAddTask;
+        this.likeRemoveTask = likeRemoveTask;
+    }
 
     @Bean("like")
     public Consumer<LikeEvent> like() {

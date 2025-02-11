@@ -4,7 +4,6 @@ import com.fc.notification.Notification;
 import com.fc.notification.NotificationRepository;
 import com.fc.notification.NotificationType;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -13,8 +12,11 @@ import java.util.Optional;
 @Slf4j
 public class NotificationService {
 
-    @Autowired
-    private NotificationRepository notificationRepository;
+    private final NotificationRepository notificationRepository;
+
+    public NotificationService(NotificationRepository notificationRepository) {
+        this.notificationRepository = notificationRepository;
+    }
 
     public void insert(Notification notification) {
         Notification result = notificationRepository.insert(notification);
@@ -43,6 +45,9 @@ public class NotificationService {
     }
 
 
-
+    public Optional<Notification> getNotificationByTypeAndUserIdAndFollowerId(NotificationType type, Long userId, Long followerId) {
+        log.info("get type and targetUserId and userId : {} | {} | {} ", type, userId, followerId);
+        return notificationRepository.findByTypeAndUserIdAndFollowerId(type, userId, followerId);
+    }
 }
 

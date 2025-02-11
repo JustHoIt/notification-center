@@ -6,9 +6,7 @@ import com.fc.NotificationService;
 import com.fc.PostClient;
 import com.fc.event.like.LikeEvent;
 import com.fc.notification.Notification;
-import com.fc.notification.NotificationType;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -20,11 +18,11 @@ import static com.fc.notification.NotificationType.LIKE;
 @Slf4j
 public class LikeRemoveTask {
 
-    @Autowired
-    PostClient postClient;
+    private final NotificationService notificationService;
 
-    @Autowired
-    NotificationService notificationService;
+    public LikeRemoveTask(PostClient postClient, NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
 
     public void processEvent(LikeEvent event) {
         Optional<Notification> optionalNotification = notificationService.getNotificationByTypeAndPostId(LIKE, event.getPostId());

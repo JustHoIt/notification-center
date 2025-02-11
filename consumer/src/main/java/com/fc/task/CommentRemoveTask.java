@@ -6,7 +6,6 @@ import com.fc.PostClient;
 import com.fc.event.comment.CommentEvent;
 import com.fc.notification.NotificationType;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
@@ -15,11 +14,14 @@ import java.util.Objects;
 @Slf4j
 public class CommentRemoveTask {
 
-    @Autowired
-    PostClient postClient;
+    private final PostClient postClient;
 
-    @Autowired
-    NotificationService notificationService;
+    private final NotificationService notificationService;
+
+    public CommentRemoveTask(PostClient postClient, NotificationService notificationService) {
+        this.postClient = postClient;
+        this.notificationService = notificationService;
+    }
 
 
     public void processEvent(CommentEvent event) {

@@ -5,7 +5,6 @@ import com.fc.event.comment.CommentEvent;
 import com.fc.notification.Notification;
 import com.fc.notification.NotificationType;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -16,14 +15,17 @@ import java.util.Objects;
 @Slf4j
 public class CommentAddTask {
 
-    @Autowired
-    PostClient postClient;
+    private final PostClient postClient;
 
-    @Autowired
-    CommentClient commentClient;
+    private final CommentClient commentClient;
 
-    @Autowired
-    NotificationService notificationService;
+    private final NotificationService notificationService;
+
+    public CommentAddTask(PostClient postClient, CommentClient commentClient, NotificationService notificationService) {
+        this.postClient = postClient;
+        this.commentClient = commentClient;
+        this.notificationService = notificationService;
+    }
 
     public void processEvent(CommentEvent event) {
         // 내가 작성한 댓글인 경우 무시

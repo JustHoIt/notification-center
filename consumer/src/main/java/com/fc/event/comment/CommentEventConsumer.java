@@ -3,7 +3,6 @@ package com.fc.event.comment;
 import com.fc.task.CommentAddTask;
 import com.fc.task.CommentRemoveTask;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +15,14 @@ import static com.fc.event.comment.CommentEventType.REMOVE;
 @Component
 public class CommentEventConsumer {
 
-    @Autowired
-    CommentAddTask commentAddTask;
+    private final CommentAddTask commentAddTask;
 
-    @Autowired
-    CommentRemoveTask commentRemoveTask;
+    private final CommentRemoveTask commentRemoveTask;
+
+    public CommentEventConsumer(CommentAddTask commentAddTask, CommentRemoveTask commentRemoveTask) {
+        this.commentAddTask = commentAddTask;
+        this.commentRemoveTask = commentRemoveTask;
+    }
 
     @Bean("comment")
     public Consumer<CommentEvent> comment() {
