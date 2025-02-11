@@ -4,6 +4,7 @@ import com.fc.*;
 import com.fc.event.comment.CommentEvent;
 import com.fc.notification.Notification;
 import com.fc.notification.NotificationType;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 @Component
+@Slf4j
 public class CommentAddTask {
 
     @Autowired
@@ -36,7 +38,6 @@ public class CommentAddTask {
 
         // 저장
         notificationService.insert(notification);
-
     }
 
     private Notification createNotification(Post post, Comment comment) {

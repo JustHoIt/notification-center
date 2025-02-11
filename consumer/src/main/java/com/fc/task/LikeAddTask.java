@@ -26,7 +26,7 @@ public class LikeAddTask {
 
     public void processEvent(LikeEvent event) {
         Post post = postClient.getPost(event.getPostId());
-        if (post != null) {
+        if (post == null) {
             log.error("Post is null with postId : {}", event.getPostId());
             return;
         }
