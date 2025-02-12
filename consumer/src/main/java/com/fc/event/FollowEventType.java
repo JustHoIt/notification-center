@@ -1,4 +1,4 @@
-package com.fc.event.follow;
+package com.fc.event;
 
 public enum FollowEventType {
     ADD,

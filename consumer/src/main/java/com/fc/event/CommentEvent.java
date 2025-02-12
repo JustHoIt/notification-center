@@ -1,4 +1,4 @@
-package com.fc.event.comment;
+package com.fc.event;
 
 import lombok.Data;
 

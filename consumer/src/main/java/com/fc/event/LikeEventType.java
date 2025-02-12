@@ -1,4 +1,4 @@
-package com.fc.event.like;
+package com.fc.event;
 
 public enum LikeEventType {
     ADD,

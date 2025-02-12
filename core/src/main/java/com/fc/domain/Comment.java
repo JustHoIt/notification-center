@@ -1,13 +1,16 @@
-package com.fc;
+package com.fc.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.Instant;
+
 @Getter
 @AllArgsConstructor
-public class Post {
+public class Comment {
     private Long id;
     private Long userId;
-    private String imageUrl;
     private String content;
+    private Instant createdAt;
+
 }

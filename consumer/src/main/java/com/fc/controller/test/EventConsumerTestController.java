@@ -1,10 +1,9 @@
-package com.fc.api;
+package com.fc.controller.test;
 
 
-import com.fc.event.comment.CommentEvent;
-import com.fc.event.follow.FollowEvent;
-import com.fc.event.like.LikeEvent;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fc.event.CommentEvent;
+import com.fc.event.FollowEvent;
+import com.fc.event.LikeEvent;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

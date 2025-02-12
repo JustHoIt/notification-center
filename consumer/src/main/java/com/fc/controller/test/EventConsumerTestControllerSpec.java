@@ -1,8 +1,8 @@
-package com.fc.api;
+package com.fc.controller.test;
 
-import com.fc.event.comment.CommentEvent;
-import com.fc.event.follow.FollowEvent;
-import com.fc.event.like.LikeEvent;
+import com.fc.event.CommentEvent;
+import com.fc.event.FollowEvent;
+import com.fc.event.LikeEvent;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;

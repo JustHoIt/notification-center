@@ -1,8 +1,12 @@
 package com.fc.task;
 
-import com.fc.*;
-import com.fc.event.like.LikeEvent;
-import com.fc.notification.Notification;
+import com.fc.client.PostClient;
+import com.fc.domain.LikeNotification;
+import com.fc.domain.Post;
+import com.fc.event.LikeEvent;
+import com.fc.domain.Notification;
+import com.fc.service.NotificationService;
+import com.fc.utils.NotificationIdGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +15,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
-import static com.fc.notification.NotificationType.LIKE;
+import static com.fc.domain.NotificationType.LIKE;
 
 @Slf4j
 @Component

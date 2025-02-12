@@ -1,10 +1,10 @@
 package com.fc.task;
 
-import com.fc.FollowNotification;
-import com.fc.NotificationIdGenerator;
-import com.fc.NotificationService;
-import com.fc.event.follow.FollowEvent;
-import com.fc.notification.NotificationType;
+import com.fc.domain.FollowNotification;
+import com.fc.utils.NotificationIdGenerator;
+import com.fc.service.NotificationService;
+import com.fc.event.FollowEvent;
+import com.fc.domain.NotificationType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

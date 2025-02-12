@@ -1,5 +1,6 @@
-package com.fc.event.comment;
+package com.fc.consumer;
 
+import com.fc.event.CommentEvent;
 import com.fc.task.CommentAddTask;
 import com.fc.task.CommentRemoveTask;
 import lombok.extern.slf4j.Slf4j;
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;
 
-import static com.fc.event.comment.CommentEventType.ADD;
-import static com.fc.event.comment.CommentEventType.REMOVE;
+import static com.fc.event.CommentEventType.ADD;
+import static com.fc.event.CommentEventType.REMOVE;
 
 @Slf4j
 @Component

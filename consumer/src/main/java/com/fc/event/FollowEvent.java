@@ -1,14 +1,14 @@
-package com.fc.event.like;
+package com.fc.event;
 
 import lombok.Data;
 
 import java.time.Instant;
 
 @Data
-public class LikeEvent {
+public class FollowEvent {
     private LikeEventType type;
-    private Long postId;
     private Long userId;
+    private Long targetUserId;
     private Instant createdAt;
 
 }

@@ -1,9 +1,15 @@
 package com.fc.task;
 
-import com.fc.*;
-import com.fc.event.comment.CommentEvent;
-import com.fc.notification.Notification;
-import com.fc.notification.NotificationType;
+import com.fc.client.CommentClient;
+import com.fc.client.PostClient;
+import com.fc.domain.Comment;
+import com.fc.domain.CommentNotification;
+import com.fc.domain.Post;
+import com.fc.event.CommentEvent;
+import com.fc.domain.Notification;
+import com.fc.domain.NotificationType;
+import com.fc.service.NotificationService;
+import com.fc.utils.NotificationIdGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
