@@ -6,6 +6,7 @@ import com.fc.domain.NotificationType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.util.Optional;
 
 @Component
@@ -48,6 +49,16 @@ public class NotificationService {
     public Optional<Notification> getNotificationByTypeAndUserIdAndFollowerId(NotificationType type, Long userId, Long followerId) {
         log.info("get type and targetUserId and userId : {} | {} | {} ", type, userId, followerId);
         return notificationRepository.findByTypeAndUserIdAndFollowerId(type, userId, followerId);
+    }
+
+    public Instant getLatestUpdatedAt(Long userId) {
+        Optional<Notification> notification = notificationRepository.findFirstByUserIdOrderByUpdatedAtDesc(userId);
+
+        if(notification.isEmpty()) {
+            return null;
+        }
+
+        return notification.get().getUpdatedAt();
     }
 }
 

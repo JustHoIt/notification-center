@@ -17,4 +17,8 @@ public class NotificationReadService {
     public Instant setLastReadAt(Long userId) {
         return repository.setLastReadAt(userId);
     }
+
+    public Instant getLastReadAt(Long userId) {
+        return repository.getLastReadAt(userId);
+    }
 }

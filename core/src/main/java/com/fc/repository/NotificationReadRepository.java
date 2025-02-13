@@ -23,4 +23,20 @@ public class NotificationReadRepository {
 
         return Instant.ofEpochMilli(lastReadAt);
     }
+
+    public Instant getLastReadAt(Long userId) {
+        String key = getKey(userId);
+        String lastReadAtStr = redisTemplate.opsForValue().get(key);
+        if(lastReadAtStr == null) {
+            return null;
+        }
+
+        Long lastReadAtLong = Long.parseLong(lastReadAtStr);
+        return Instant.ofEpochMilli(lastReadAtLong);
+    }
+
+
+    private String getKey(Long userId) {
+        return userId + ":lastReadAt";
+    }
 }

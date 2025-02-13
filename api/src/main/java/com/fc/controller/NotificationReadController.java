@@ -21,9 +21,9 @@ public class NotificationReadController implements NotificationReadControllerSpe
 
 
     @Override
-    @PutMapping("/{userId}")
+    @PutMapping("/{userId}/read")
     public SetLastReadAtResponse setLastReadAt(
-            @PathVariable Long userId
+            @PathVariable(value = "userId") Long userId
     ) {
         Instant lastReadAt = notificationReadService.setLastReadAt(userId);
 
